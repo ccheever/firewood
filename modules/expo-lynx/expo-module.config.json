@@ -1,0 +1,20 @@
+{
+  "platforms": [
+    "apple",
+    "android",
+    "web"
+  ],
+  "apple": {
+    "modules": [
+      "ExpoLynxModule"
+    ]
+  },
+  "android": {
+    "modules": [
+      "expo.modules.lynx.ExpoLynxModule"
+    ]
+  },
+  "plugins": [
+    "./src/plugin"
+  ]
+}

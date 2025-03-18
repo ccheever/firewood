@@ -1,0 +1,26 @@
+{
+  "name": "expo-lynx",
+  "version": "0.1.0",
+  "description": "Expo module for Lynx browser integration",
+  "main": "index.ts",
+  "types": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "expo",
+    "lynx",
+    "browser"
+  ],
+  "peerDependencies": {
+    "expo": "*"
+  },
+  "dependencies": {
+    "@expo/config-plugins": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "~18.2.14",
+    "typescript": "^5.1.3"
+  }
+} 
