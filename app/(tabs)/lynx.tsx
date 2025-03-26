@@ -6,8 +6,10 @@ import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 
 import { ExpoLynxView } from '@/modules/expo-lynx';
+import RenderLynxView from 'react-native-render-lynx';
 
 export default function LynxScreen() {
+  const bundleUrl = 'https://unpkg.com/@lynx-example/hello-world/dist/main.lynx.bundle';
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
@@ -24,6 +26,15 @@ export default function LynxScreen() {
       </ThemedView>
       <ThemedText>Lynx will go here when it is ready.</ThemedText>
       <ExpoLynxView style={{ flex: 1, height: 200 }} />
+      {/* <RenderLynxView style={ */}
+      {/*   { */}
+      {/*     flex: 1, */}
+      {/*     height: 700, */}
+      {/*     width: 300, */}
+      {/*     backgroundColor: 'transparent', */}
+      {/*   } */}
+      {/* } bundleUrl={bundleUrl} /> */}
+
     </ParallaxScrollView>
   );
 }
