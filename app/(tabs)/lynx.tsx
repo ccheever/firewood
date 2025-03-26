@@ -25,16 +25,7 @@ export default function LynxScreen() {
         <ThemedText type="title">Lynx</ThemedText>
       </ThemedView>
       <ThemedText>Lynx will go here when it is ready.</ThemedText>
-      <ExpoLynxView style={{ flex: 1, height: 200 }} />
-      {/* <RenderLynxView style={ */}
-      {/*   { */}
-      {/*     flex: 1, */}
-      {/*     height: 700, */}
-      {/*     width: 300, */}
-      {/*     backgroundColor: 'transparent', */}
-      {/*   } */}
-      {/* } bundleUrl={bundleUrl} /> */}
-
+      <ExpoLynxView style={{ flex: 1, height: 300 }} />
     </ParallaxScrollView>
   );
 }

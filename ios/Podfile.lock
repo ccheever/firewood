@@ -233,6 +233,14 @@ PODS:
     - ExpoModulesCore
   - ExpoLynx (1.0.0):
     - ExpoModulesCore
+    - Lynx/Framework (= 3.2.0-rc.0)
+    - LynxService/Http (= 3.2.0-rc.0)
+    - LynxService/Image (= 3.2.0-rc.0)
+    - LynxService/Log (= 3.2.0-rc.0)
+    - PrimJS/napi (= 2.11.1-rc.0)
+    - PrimJS/quickjs (= 2.11.1-rc.0)
+    - SDWebImage (= 5.15.5)
+    - SDWebImageWebPCoder (= 0.11.0)
   - ExpoModulesCore (2.2.3):
     - DoubleConversion
     - glog
@@ -2411,7 +2419,7 @@ SPEC CHECKSUMS:
   ExpoHead: caaccab2474a1b1f3be62eb1d493f9d30c704f94
   ExpoKeepAwake: b0171a73665bfcefcfcc311742a72a956e6aa680
   ExpoLinking: 8d12bee174ba0cdf31239706578e29e74a417402
-  ExpoLynx: e66b2ee6f49c8490f222dc3fa1a03fdfd2bc7cc4
+  ExpoLynx: 26a766d971d7c102622a7765194dd84be663818f
   ExpoModulesCore: 98297c2cc7977c43740a2e52d850d94ac8dbf176
   ExpoSplashScreen: 0f281e3c2ded4757d2309276c682d023c6299c77
   ExpoSymbols: f3002db15156cd4e505c77b6ea1df5c984db9965
