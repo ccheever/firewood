@@ -1,38 +1,27 @@
 import ExpoModulesCore
-import WebKit
+import UIKit
 
 // This view will be used as a native component. Make sure to inherit from `ExpoView`
 // to apply the proper styling (e.g. border radius and shadows).
 class ExpoLynxView: ExpoView {
-  let webView = WKWebView()
-  let onLoad = EventDispatcher()
-  var delegate: WebViewDelegate?
-
-  required init(appContext: AppContext? = nil) {
-    super.init(appContext: appContext)
-    clipsToBounds = true
-    delegate = WebViewDelegate { url in
-      self.onLoad(["url": url])
+    private let label: UILabel
+    
+    required init(appContext: AppContext? = nil) {
+        // Create a UILabel for "Hello World"
+        label = UILabel()
+        label.text = "Hello World"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        
+        super.init(appContext: appContext)
+        
+        clipsToBounds = true
+        addSubview(label)
     }
-    webView.navigationDelegate = delegate
-    addSubview(webView)
-  }
 
-  override func layoutSubviews() {
-    webView.frame = bounds
-  }
-}
-
-class WebViewDelegate: NSObject, WKNavigationDelegate {
-  let onUrlChange: (String) -> Void
-
-  init(onUrlChange: @escaping (String) -> Void) {
-    self.onUrlChange = onUrlChange
-  }
-
-  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation) {
-    if let url = webView.url {
-      onUrlChange(url.absoluteString)
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // Position the label to fill the view
+        label.frame = bounds
     }
-  }
 }

@@ -5,7 +5,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 
-import ExpoLynx from '@/modules/expo-lynx';
+import { ExpoLynxView } from '@/modules/expo-lynx';
 
 export default function LynxScreen() {
   return (
@@ -23,7 +23,7 @@ export default function LynxScreen() {
         <ThemedText type="title">Lynx</ThemedText>
       </ThemedView>
       <ThemedText>Lynx will go here when it is ready.</ThemedText>
-      <ThemedText>{ExpoLynx.hello()}</ThemedText>
+      <ExpoLynxView style={{ flex: 1, height: 200 }} />
     </ParallaxScrollView>
   );
 }
