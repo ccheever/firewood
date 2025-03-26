@@ -29,7 +29,6 @@
     },
     "plugins": [
       "expo-router",
-      "react-native-render-lynx",
       [
         "expo-splash-screen",
         {
