@@ -1,10 +1,8 @@
 import { TID } from "@atproto/common-web";
 import * as Status from "@/lexicon/types/app/ocho/status";
-import { useAuth } from "@/state/auth";
+import { Agent } from "@atproto/api";
 
-export const updateStatus = async (status: string) => {
-  const { agent } = useAuth();
-
+export const updateStatus = async (agent: Agent, status: string) => {
   if (!agent) {
     throw new Error("Agent not found");
   }
