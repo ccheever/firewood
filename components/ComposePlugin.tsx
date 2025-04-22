@@ -2,8 +2,8 @@ import { Button, KeyboardAvoidingView, TextInput, View } from "react-native";
 import { ThemedText } from "./ThemedText";
 import { useCompose } from "@/state/compose";
 import { useState } from "react";
-import { updateStatus } from "@/lib/status";
 import { useAuth } from "@/state/auth";
+import { updateCode } from "@/lib/plugin/code";
 
 export const ComposePost = () => {
   const { closeCompose } = useCompose();
@@ -23,7 +23,7 @@ export const ComposePost = () => {
           title="Post"
           onPress={async () => {
             console.log("Posting:", text);
-            await updateStatus(agent, text);
+            await updateCode(agent, text);
             setText("");
             closeCompose();
           }}
@@ -31,7 +31,7 @@ export const ComposePost = () => {
       </View>
       <KeyboardAvoidingView behavior="padding" className="flex-1">
         <View className="flex-1 gap-4">
-          <ThemedText>Compose your post here...</ThemedText>
+          <ThemedText>Compose your plugin content here...</ThemedText>
           <TextInput
             autoFocus
             value={text}

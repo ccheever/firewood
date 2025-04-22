@@ -10,6 +10,50 @@ import {
 import { type $Typed, is$typed, maybe$typed } from "./util";
 
 export const schemaDict = {
+  AppOchoPluginCode: {
+    lexicon: 1,
+    id: "app.ocho.plugin.code",
+    defs: {
+      main: {
+        type: "record",
+        key: "tid",
+        record: {
+          type: "object",
+          required: ["data", "createdAt"],
+          properties: {
+            data: {
+              type: "string",
+            },
+            createdAt: {
+              type: "string",
+              format: "datetime",
+            },
+          },
+        },
+      },
+    },
+  },
+  AppOchoPluginService: {
+    lexicon: 1,
+    id: "app.ocho.plugin.service",
+    defs: {
+      main: {
+        type: "record",
+        description: "A declaration of the existence of plugin service.",
+        key: "literal:self",
+        record: {
+          type: "object",
+          required: ["createdAt"],
+          properties: {
+            createdAt: {
+              type: "string",
+              format: "datetime",
+            },
+          },
+        },
+      },
+    },
+  },
   AppOchoStatus: {
     lexicon: 1,
     id: "app.ocho.status",
@@ -69,5 +113,7 @@ export function validate(
 }
 
 export const ids = {
+  AppOchoPluginCode: "app.ocho.plugin.code",
+  AppOchoPluginService: "app.ocho.plugin.service",
   AppOchoStatus: "app.ocho.status",
 } as const;

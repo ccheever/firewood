@@ -5,8 +5,10 @@ import data from "./data.json";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { View } from "react-native";
 import LoginButton from "@/components/LoginButton";
-import StatusButton from "@/components/StatusButton";
 import ComposeButton from "@/components/ComposeButton";
+import { useAuth } from "@/state/auth";
+import { useEffect } from "react";
+import UpdatePluginButton from "@/components/UpdatePluginButton";
 
 function Post({ item }: { item: (typeof data)[0] }) {
   return (
@@ -40,8 +42,8 @@ export default function HomeScreen() {
     <BaseView>
       <View className="h-full items-center justify-center">
         <LoginButton />
-        <StatusButton />
         <ComposeButton />
+        <UpdatePluginButton />
       </View>
       {/* <LegendList */}
       {/*   className='flex-1 gap-4' */}

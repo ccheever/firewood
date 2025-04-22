@@ -72,7 +72,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const login = async () => {
     setLoading(true);
     try {
-      const handle = "eliot.sh";
+      const handle = "eliot.pds.eliot.sh";
+      // const handle = "eliot.sh";
       const loginUrl = await oauthClient.authorize(handle);
       console.log("loginUrl", loginUrl);
       const res = await openAuthSessionAsync(loginUrl.toString());

@@ -19,6 +19,6 @@ export const metadata: ClientMetadata = {
 };
 
 export const oauthClient = new ReactNativeOAuthClient({
-  handleResolver: "https://bsky.social/xrpc/com.atproto.handle.resolve",
+  handleResolver: "https://pds.eliot.sh",
   clientMetadata: metadata,
 });

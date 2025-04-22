@@ -36,6 +36,16 @@ export class AppNS {
 
 export class AppOchoNS {
   _server: Server
+  plugin: AppOchoPluginNS
+
+  constructor(server: Server) {
+    this._server = server
+    this.plugin = new AppOchoPluginNS(server)
+  }
+}
+
+export class AppOchoPluginNS {
+  _server: Server
 
   constructor(server: Server) {
     this._server = server

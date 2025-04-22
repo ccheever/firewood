@@ -3,30 +3,28 @@ import { Button, Platform, View } from "react-native";
 import { useAuth } from "@/state/auth";
 import { ThemedText } from "./ThemedText";
 
-WebBrowser.maybeCompleteAuthSession();
+// WebBrowser.maybeCompleteAuthSession();
 
 export default function App() {
   const auth = useAuth();
 
-  return (
+  return auth.isLoggedIn ? (
     <View>
-      {auth.isLoggedIn ? (
-        <View>
-          <ThemedText>Welcome, {auth.user.name}</ThemedText>
-        </View>
-      ) : (
-        <ThemedText>Login to see your profile</ThemedText>
-      )}
-      <Button
-        title="Login"
-        onPress={() => {
-          auth.login();
-        }}
-      />
+      <ThemedText>Welcome, {auth.user.value.displayName}</ThemedText>
       <Button
         title="Logout"
         onPress={() => {
           auth.logout();
+        }}
+      />
+    </View>
+  ) : (
+    <View>
+      <ThemedText>Login to see your profile</ThemedText>
+      <Button
+        title="Login"
+        onPress={() => {
+          auth.login();
         }}
       />
     </View>

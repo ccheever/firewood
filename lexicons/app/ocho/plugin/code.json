@@ -1,0 +1,23 @@
+{
+  "lexicon": 1,
+  "id": "app.ocho.plugin.code",
+  "defs": {
+    "main": {
+      "type": "record",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["data", "createdAt"],
+        "properties": {
+          "data": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          }
+        }
+      }
+    }
+  }
+}
