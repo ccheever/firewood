@@ -1,74 +1,55 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import * as Updates from "expo-updates";
+import {
+  type SnackConfig,
+  type SnackState,
+  defaultSnackModules,
+  SnackRuntimeProvider,
+  SnackRuntime,
+} from "snack-runtime";
+import BaseView from "@/components/BaseView";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const config: SnackConfig = {
+  modules: {
+    // Inherit the default set of modules from Snack
+    ...defaultSnackModules,
+  },
+};
 
-export default function HomeScreen() {
+export function Snack() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SnackRuntimeProvider config={config}>
+      <SnackRuntime
+        onSnackState={onStateChange}
+        onSnackReload={onReloadRequested}
+        snackUrl={`exp://u.expo.dev/933fd9c0-1666-11e7-afca-d980795c5824?runtime-version=exposdk%3A52.0.0&channel-name=production&snack=%40elioth%2Fgnarly-green-yogurt&snack-channel=JVBrMSJTcD`}
+      />
+    </SnackRuntimeProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+// Requested through the Snack website
+function onReloadRequested() {
+  return Updates.reloadAsync();
+}
+
+// When the lifecycle of a Snack changes
+function onStateChange(state: SnackState) {
+  if (state === "loading") console.log("Snack is initializing the code...");
+  if (state === "finished") console.log("Snack is ready and rendered!");
+  if (state === "error")
+    console.error("Snack failed to initialize, check the logs for more info.");
+  if (state === "not-found")
+    console.error(
+      "Snack failed to initialize by snack identifier, Snack not found",
+    );
+
+  throw new Error(`Unexpected Snack state received "${state}"`);
+}
+
+export default function HomeScreen() {
+  return (
+    <BaseView>
+      <Snack />
+    </BaseView>
+  );
+}
