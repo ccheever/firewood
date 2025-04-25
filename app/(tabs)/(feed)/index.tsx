@@ -1,14 +1,15 @@
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import BaseView from "@/components/BaseView";
-import data from "./data.json";
+import data from "../data.json";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { View } from "react-native";
+import { Button, TextInput, View } from "react-native";
 import LoginButton from "@/components/LoginButton";
 import ComposeButton from "@/components/ComposeButton";
 import { useAuth } from "@/state/auth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import UpdatePluginButton from "@/components/UpdatePluginButton";
+import { Link } from "expo-router";
 
 function Post({ item }: { item: (typeof data)[0] }) {
   return (
@@ -38,12 +39,30 @@ function Post({ item }: { item: (typeof data)[0] }) {
 }
 
 export default function HomeScreen() {
+  const [text, setText] = useState("");
+
   return (
     <BaseView>
-      <View className="h-full items-center justify-center">
-        <LoginButton />
-        <ComposeButton />
-        <UpdatePluginButton />
+      <View className="h-full items-center justify-center p-4 gap-4">
+        <TextInput
+          autoFocus
+          value={text}
+          onChangeText={setText}
+          autoCapitalize="none"
+          className="w-full border border-neutral-200 dark:border-neutral-800 p-4"
+        />
+        <Link
+          disabled={!text}
+          href={{
+            pathname: "/users/[user]",
+            params: {
+              user: text,
+            },
+          }}
+          className="text-lg"
+        >
+          {text ? `Go to ${text}` : "..."}
+        </Link>
       </View>
       {/* <LegendList */}
       {/*   className='flex-1 gap-4' */}

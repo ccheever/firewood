@@ -1,4 +1,4 @@
-const url = "https://5102-171-66-13-127.ngrok-free.app";
+const url = "https://striking-remotely-pangolin.ngrok-free.app";
 
 const metadata = {
   client_id: `${url}/client-metadata.json`,

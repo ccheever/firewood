@@ -1,25 +1,42 @@
-import { TID } from "@atproto/common-web";
 import * as Service from "@/lexicon/types/app/ocho/plugin/service";
 import { Agent } from "@atproto/api";
+import { err, ok } from "neverthrow";
 
-export const getPluginDefinition = async (agent: Agent) => {
+export const getPluginDefinition = async (agent: Agent, did?: string) => {
   if (!agent) {
-    throw new Error("Agent not found");
+    console.log("Agent not found");
+    return err("Agent not found");
   }
 
-  const res = await agent.com.atproto.repo.getRecord({
-    repo: agent.assertDid,
-    collection: "app.ocho.plugin.service",
-    rkey: "self",
-  });
+  const res = await agent.com.atproto.repo
+    .getRecord({
+      repo: did ?? agent.assertDid,
+      collection: "app.ocho.plugin.service",
+      rkey: "self",
+    })
+    .catch((err) => {
+      console.log("Error fetching plugin definition", err);
+      return null;
+    });
 
-  const record = res.data;
-
-  if (!record || !Service.validateRecord(record).success) {
-    throw new Error("Invalid plugin definition");
+  if (!res) {
+    console.log("Error fetching plugin definition");
+    return err("Error fetching plugin definition");
   }
 
-  return record;
+  const record = res?.data;
+
+  if (!record) {
+    console.log("No plugin definition found");
+    return err("Plugin definition not found");
+  }
+
+  if (!Service.validateRecord(record.value).success) {
+    console.log("Invalid plugin definition", record);
+    return err("Invalid plugin definition");
+  }
+
+  return ok(record.value as Service.Record);
 };
 
 export const enablePlugin = async (agent: Agent) => {
@@ -30,12 +47,12 @@ export const enablePlugin = async (agent: Agent) => {
 
   if (!Service.validateRecord(record).success) {
     console.log("Invalid plugin record", record);
-    throw new Error("Invalid service record");
+    return err("Invalid plugin record");
   }
 
-  const existing = await getPluginDefinition(agent).catch(() => undefined);
+  const existing = await getPluginDefinition(agent);
 
-  if (existing) {
+  if (existing.isOk()) {
     const res = await agent.com.atproto.repo.putRecord({
       repo: agent.assertDid,
       collection: "app.ocho.plugin.service",
@@ -62,6 +79,8 @@ export const enablePlugin = async (agent: Agent) => {
 
     console.log("Plugin enabled:", uri);
   }
+
+  return ok();
 };
 
 export const disablePlugin = async (agent: Agent) => {

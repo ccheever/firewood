@@ -35,7 +35,15 @@ const getProfile = async (agent: Agent) => {
   if (profileResponse?.data) {
     return profileResponse.data;
   } else {
-    throw new Error("Failed to fetch profile");
+    console.error("Failed to fetch profile");
+    return {
+      value: {
+        did: agent.did,
+        displayName: agent.did,
+        description: "",
+        avatar: null,
+      },
+    };
   }
 };
 
@@ -72,7 +80,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const login = async () => {
     setLoading(true);
     try {
-      const handle = "eliot.pds.eliot.sh";
+      const handle = "eliot.ocho.app";
       // const handle = "eliot.sh";
       const loginUrl = await oauthClient.authorize(handle);
       console.log("loginUrl", loginUrl);

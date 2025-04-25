@@ -3,7 +3,7 @@ import {
   ReactNativeOAuthClient,
 } from "@aquareum/atproto-oauth-client-react-native";
 
-const url = "https://5102-171-66-13-127.ngrok-free.app";
+const url = "https://striking-remotely-pangolin.ngrok-free.app";
 
 export const metadata: ClientMetadata = {
   client_id: `${url}/client-metadata.json`,
@@ -19,6 +19,6 @@ export const metadata: ClientMetadata = {
 };
 
 export const oauthClient = new ReactNativeOAuthClient({
-  handleResolver: "https://pds.eliot.sh",
+  handleResolver: "https://ocho.app",
   clientMetadata: metadata,
 });

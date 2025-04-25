@@ -28,7 +28,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="(feed)"
         options={{
           title: "Feed",
           tabBarIcon: ({ color }) => (
@@ -37,7 +37,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="(message)"
         options={{
           title: "Message",
           tabBarIcon: ({ color }) => (
