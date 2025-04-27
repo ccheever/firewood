@@ -4,6 +4,7 @@ import { useCompose } from "@/state/compose";
 import { useState } from "react";
 import { useAuth } from "@/state/auth";
 import { updateCode } from "@/lib/plugin/code";
+import { fetchCodeBySnackIdentifier } from "snack-runtime";
 
 export const ComposePost = () => {
   const { closeCompose } = useCompose();
@@ -22,10 +23,21 @@ export const ComposePost = () => {
         <Button
           title="Post"
           onPress={async () => {
-            console.log("Posting:", text);
-            await updateCode(agent, text);
-            setText("");
-            closeCompose();
+            try {
+              const code = await fetchCodeBySnackIdentifier(
+                "@elioth/shallow-orange-scones",
+              );
+              console.log(code);
+              if (code) {
+                await updateCode(agent, JSON.stringify(code));
+                setText("");
+                closeCompose();
+              } else {
+                console.error("Failed to fetch code");
+              }
+            } catch (error) {
+              console.error("Error posting plugin:", error);
+            }
           }}
         />
       </View>

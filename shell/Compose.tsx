@@ -1,5 +1,4 @@
 import { ComposePost } from "@/components/ComposePlugin";
-import { ThemedText } from "@/components/ThemedText";
 import { useCompose } from "@/state/compose";
 import { Button, Modal, View } from "react-native";
 

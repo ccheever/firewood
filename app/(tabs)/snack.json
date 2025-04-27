@@ -1,0 +1,44 @@
+{
+  "id": "f854bcde-e306-4f42-bb90-6b10454cf934",
+  "hashId": "MflppvIbwoW-MSwSSCjX6",
+  "code": {
+    "App.js": {
+      "type": "CODE",
+      "contents": "import { Text, SafeAreaView, StyleSheet } from 'react-native';\n\n\nexport default function App() {\n  return (\n    <SafeAreaView style={styles.container}>\n      <Text style={styles.paragraph}>\nthis is a test      </Text>\n    </SafeAreaView>\n  );\n}\n\nconst styles = StyleSheet.create({\n  container: {\n    flex: 1,\n    justifyContent: 'center',\n    backgroundColor: '#ecf0f1',\n    padding: 8,\n  },\n  paragraph: {\n    margin: 24,\n    fontSize: 18,\n    fontWeight: 'bold',\n    textAlign: 'center',\n  },\n});\n"
+    },
+    "assets/snack-icon.png": {
+      "contents": "https://snack-code-uploads.s3.us-west-1.amazonaws.com/~asset/2f7d32b1787708aba49b3586082d327b",
+      "type": "ASSET"
+    },
+    "README.md": {
+      "contents": "# Sample Snack app\n\nOpen the `App.js` file to start writing some code. You can preview the changes directly on your phone or tablet by scanning the **QR code** or use the iOS or Android emulators. When you're done, click **Save** and share the link!\n\nWhen you're ready to see everything that Expo provides (or if you want to use your own editor) you can **Download** your project and use it with [expo cli](https://docs.expo.dev/get-started/installation/#expo-cli)).\n\nAll projects created in Snack are publicly available, so you can easily share the link to this project via link, or embed it on a web page with the `<>` button.\n\nIf you're having problems, you can tweet to us [@expo](https://twitter.com/expo) or ask in our [forums](https://forums.expo.dev/c/expo-dev-tools/61) or [Discord](https://chat.expo.dev/).\n\nSnack is Open Source. You can find the code on the [GitHub repo](https://github.com/expo/snack).\n",
+      "type": "CODE"
+    }
+  },
+  "sdkVersion": "52.0.0",
+  "created": "2025-04-25T23:15:56.008Z",
+  "manifest": {
+    "sdkVersion": "52.0.0",
+    "name": "grounded orange yogurt",
+    "description": "No description",
+    "dependencies": {
+      "react-native-paper": "4.9.2",
+      "@expo/vector-icons": "^14.0.2"
+    }
+  },
+  "previewLocation": null,
+  "status": null,
+  "dependencies": {
+    "@expo/vector-icons": { "version": "^14.0.2", "wantedVersion": "^14.0.2" },
+    "react-native-paper": {
+      "handle": "snackager-1/react-native-paper@4.9.2",
+      "version": "4.9.2"
+    }
+  },
+  "username": "snack",
+  "history": [
+    { "hashId": "MflppvIbwoW-MSwSSCjX6", "savedAt": "2025-04-25T23:15:56.123Z" }
+  ],
+  "isDraft": false,
+  "accountSnackId": "cf3c5827-56b8-4d31-93c8-ba0906f8ea8e"
+}
