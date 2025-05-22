@@ -9,8 +9,15 @@ import {
 
 const config: SnackConfig = {
   modules: {
-    // Inherit the default set of modules from Snack
     ...defaultSnackModules,
+    // Only works when vendored into the runtime (expo-router@1.5.3)
+    "expo-router": require("expo-router"),
+    "expo-router/stack": require("expo-router/stack"),
+    "expo-router/tabs": require("expo-router/tabs"),
+    "expo-router/drawer": require("expo-router/drawer"),
+    "expo-router/html": require("expo-router/html"),
+    "expo-router/head": require("expo-router/head"),
+    "expo-router/entry": () => {}, // noop
   },
 };
 
@@ -22,10 +29,7 @@ export default function PluginDisplay({
   return (
     <SnackRuntimeProvider config={config}>
       {/* @ts-expect-error Error in typing of the SnackRuntime */}
-      <SnackRuntime
-        snackCode={snackCode}
-        snackUrl={`exp://u.expo.dev/933fd9c0-1666-11e7-afca-d980795c5824?runtime-version=exposdk%3A52.0.0&channel-name=production&snack=%40elioth%2Fgrounded-orange-yogurt&snack-channel=VfQpfo8eyY`}
-      />
+      <SnackRuntime snackCode={snackCode} />
     </SnackRuntimeProvider>
   );
 }

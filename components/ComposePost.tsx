@@ -23,7 +23,7 @@ export const ComposePost = () => {
           title="Post"
           onPress={async () => {
             console.log("Posting:", text);
-            await updateStatus(agent, text);
+            await updatestatus(agent, text);
             setText("");
             closeCompose();
           }}
